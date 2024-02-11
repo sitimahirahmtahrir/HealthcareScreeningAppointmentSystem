@@ -1,14 +1,15 @@
-package com.kpjjohor.healthcare; // Adjust this package declaration to match your project structure
+package com.kpjjohor.healthcare;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
-class HsasApplicationTests {
+@ActiveProfiles("test")
+public class HsasApplicationTests {
 
     @Test
-    void contextLoads() {
-        // This test ensures that the application context loads successfully.
-        // You can add more tests as needed.
+    public void contextLoads() {
     }
+
 }
