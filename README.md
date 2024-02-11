@@ -1,9 +1,9 @@
 # Project Overview
-Project Title: Healthcare Screening Appointment System
-Course: Internet Programming
-Program: Bachelor of Computer Science (Software Engineering)
-Course Lecturer(s): Mr. Norizam Bin Katmon
-Prepared by : Siti Mahirah binti M Tahrir
+- Project Title: Healthcare Screening Appointment System
+- Course: Internet Programming
+- Program: Bachelor of Computer Science (Software Engineering)
+- Course Lecturer(s): Mr. Norizam Bin Katmon
+- Prepared by : Siti Mahirah binti M Tahrir
 
 # Project Requirements
 - Framework: Spring MVC with Spring Boot
