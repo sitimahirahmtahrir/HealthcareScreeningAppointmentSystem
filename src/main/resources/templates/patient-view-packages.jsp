@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appointment Approval Dashboard</title>
+    <title>Available Packages</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Appointment Approval Dashboard</h1>
+        <h1>Available Packages</h1>
     </header>
     <main>
-        <section id="appointment-requests">
-            <h2>Pending Appointment Requests</h2>
+        <section id="available-packages">
+            <h2>Select a Package</h2>
             <ul>
-                <!-- Appointment request data will be populated here by the controller -->
+                <!-- Available package data will be populated here by the controller -->
             </ul>
         </section>
     </main>

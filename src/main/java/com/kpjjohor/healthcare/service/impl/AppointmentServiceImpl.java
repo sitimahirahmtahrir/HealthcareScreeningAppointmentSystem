@@ -1,43 +1,40 @@
 package com.kpjjohor.healthcare.service.impl;
 
-import com.kpjjohor.healthcare.model.Appointment;
-import com.kpjjohor.healthcare.repository.AppointmentRepository;
-import com.kpjjohor.healthcare.service.AppointmentService;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import com.kpjjohor.healthcare.exception.EntityNotFoundException;
+import com.kpjjohor.healthcare.model.Appointment;
+import com.kpjjohor.healthcare.model.AppointmentStatus;
+import com.kpjjohor.healthcare.repository.AppointmentRepository;
+
 @Service
-public class AppointmentServiceImpl implements AppointmentService {
+public class AppointmentServiceImpl {
 
-    private final AppointmentRepository appointmentRepository;
+    @Autowired
+    private AppointmentRepository appointmentRepository;
 
-    public AppointmentServiceImpl(AppointmentRepository appointmentRepository) {
-        this.appointmentRepository = appointmentRepository;
+    public List<Appointment> findAllAppointments() {
+        return appointmentRepository.findAll();
     }
 
-    @Override
-    public List<Appointment> getPendingAppointments() {
-        // Implementation for retrieving pending appointments
-        return null;
+    public Appointment findAppointmentById(Long id) {
+        return appointmentRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Appointment not found with ID: " + id));
     }
 
-    @Override
-    public void approveAppointment(Long appointmentId) {
-        // Implementation for approving appointment
+    @SuppressWarnings("unchecked")
+	public List<Appointment> findAppointmentsByStatus(AppointmentStatus status) {
+        Pageable pageable = PageRequest.of(0, 10);
+        return (List<Appointment>) appointmentRepository.findByStatus(status, pageable);
     }
 
-    @Override
-    public void rejectAppointment(Long appointmentId) {
-        // Implementation for rejecting appointment
+    public Appointment updateAppointmentStatus(Long id, AppointmentStatus status) {
+        Appointment appointment = findAppointmentById(id);
+        appointment.setStatus(status);
+        return appointmentRepository.save(appointment);
     }
-
-    @Override
-    public void saveAppointment(Appointment appointment) {
-        // Implementation for saving appointment
-    }
-
-	public AppointmentRepository getAppointmentRepository() {
-		return appointmentRepository;
-	}
 }

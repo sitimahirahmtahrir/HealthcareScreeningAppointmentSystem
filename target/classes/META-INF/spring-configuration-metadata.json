@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "hsas",
+      "type": "com.kpjjohor.healthcare.HsasApplication",
+      "sourceType": "com.kpjjohor.healthcare.HsasApplication"
+    }
+  ],
+  "properties": [
+    {
+      "name": "hsas.description",
+      "type": "java.lang.String",
+      "sourceType": "com.kpjjohor.healthcare.HsasApplication"
+    },
+    {
+      "name": "hsas.title",
+      "type": "java.lang.String",
+      "sourceType": "com.kpjjohor.healthcare.HsasApplication"
+    }
+  ],
+  "hints": []
+}
