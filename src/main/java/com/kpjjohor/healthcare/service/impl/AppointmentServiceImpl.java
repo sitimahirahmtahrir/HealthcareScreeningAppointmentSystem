@@ -1,40 +1,40 @@
 package com.kpjjohor.healthcare.service.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-
-import com.kpjjohor.healthcare.exception.EntityNotFoundException;
 import com.kpjjohor.healthcare.model.Appointment;
-import com.kpjjohor.healthcare.model.AppointmentStatus;
-import com.kpjjohor.healthcare.repository.AppointmentRepository;
+import com.kpjjohor.healthcare.service.AppointmentService;
+import com.kpjjohor.healthcare.service.dao.AppointmentDAO;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+import java.util.Map;
 
-@Service
-public class AppointmentServiceImpl {
+public abstract class AppointmentServiceImpl implements AppointmentService {
 
-    @Autowired
-    private AppointmentRepository appointmentRepository;
+    private AppointmentDAO appointmentDAO;
 
-    public List<Appointment> findAllAppointments() {
-        return appointmentRepository.findAll();
+    public AppointmentServiceImpl(AppointmentDAO appointmentDAO) {
+        this.appointmentDAO = appointmentDAO;
     }
 
-    public Appointment findAppointmentById(Long id) {
-        return appointmentRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Appointment not found with ID: " + id));
+    @SuppressWarnings("boxing")
+	public Appointment scheduleAppointment(Long medicalProfessionalId, LocalDate date, LocalTime time) {
+        Appointment appointment = new Appointment();
+        appointment.setMedicalProfessionalId(medicalProfessionalId);
+        appointment.setDate(date);
+        appointment.setTime(time);
+        appointmentDAO.create(appointment);
+        return appointment;
     }
 
-    @SuppressWarnings("unchecked")
-	public List<Appointment> findAppointmentsByStatus(AppointmentStatus status) {
-        Pageable pageable = PageRequest.of(0, 10);
-        return (List<Appointment>) appointmentRepository.findByStatus(status, pageable);
+    public void cancelAppointment(Long appointmentId) {
+        Appointment appointment = appointmentDAO.findById(appointmentId);
+        if (appointment != null) {
+            appointmentDAO.delete(appointment);
+        }
     }
 
-    public Appointment updateAppointmentStatus(Long id, AppointmentStatus status) {
-        Appointment appointment = findAppointmentById(id);
-        appointment.setStatus(status);
-        return appointmentRepository.save(appointment);
+    @Override
+    public Map<LocalDate, List<Appointment>> getSchedule(Long medicalProfessionalId) {
+        return appointmentDAO.findScheduleByMedicalProfessionalId(medicalProfessionalId);
     }
 }

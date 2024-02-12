@@ -3,7 +3,10 @@ package com.kpjjohor.healthcare.model;
 import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 public class Appointment {
@@ -36,11 +39,70 @@ public class Appointment {
     @Column(name = "notes")
     private String notes;
 
-    public void setStatus(AppointmentStatus status) {
-        this.status = status;
+    public Appointment() {}
+
+    public Appointment(User user, HealthScreeningPackage healthScreeningPackage, LocalDateTime appointmentDateTime) {
+        this.user = user;
+        this.healthScreeningPackage = healthScreeningPackage;
+        this.appointmentDateTime = appointmentDateTime;
+        this.status = AppointmentStatus.PENDING;
     }
 
-    // Constructors, getters, setters, and other methods
+    public Long getId() { return id; }
 
-    // Remove unused methods or fields as needed
+    public void setId(Long id) { this.id = id; }
+
+    public User getUser() { return user; }
+
+    public void setUser(User user) { this.user = user; }
+
+    public HealthScreeningPackage getHealthScreeningPackage() { return healthScreeningPackage; }
+
+    public void setHealthScreeningPackage(HealthScreeningPackage healthScreeningPackage) { this.healthScreeningPackage = healthScreeningPackage; }
+
+    public LocalDateTime getAppointmentDateTime() { return appointmentDateTime; }
+
+    public void setAppointmentDateTime(LocalDateTime appointmentDateTime) { this.appointmentDateTime = appointmentDateTime; }
+
+    public AppointmentStatus getStatus() { return status; }
+
+    public void setStatus(AppointmentStatus status) { this.status = status; }
+
+    public String getLocation() { return location; }
+
+    public void setLocation(String location) { this.location = location; }
+
+    public String getNotes() { return notes; }
+
+    public void setNotes(String notes) { this.notes = notes; }
+
+    public LocalDate getDate() {
+        return appointmentDateTime.toLocalDate();
+    }
+
+    public LocalTime getTime() {
+        return appointmentDateTime.toLocalTime();
+    }
+
+    @SuppressWarnings("unused")
+	public void setMedicalProfessionalId(long medicalProfessionalId) {
+        // You can implement the logic to set the medical professional's id here
+    }
+
+    public long getMedicalProfessionalId() {
+        // You can implement the logic to get the medical professional's id here
+        return 0;
+    }
+
+	@SuppressWarnings(value = { "unused" })
+	public void setDate(LocalDate date) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@SuppressWarnings(value = {"unused" })
+	public void setTime(LocalTime time) {
+		// TODO Auto-generated method stub
+		
+	}
 }
