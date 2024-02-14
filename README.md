@@ -1,6 +1,6 @@
 # Healthcare Screening Appointment System
 
-#Project Overview
+# Project Overview
 The Healthcare Screening Appointment System (HSAS) is designed to streamline the appointment and screening process for healthcare institutions. Built using the Spring MVC framework with Spring Boot, the application follows the Model-View-Controller (MVC) architecture. It leverages Spring JDBC for efficient database connectivity, ensuring smooth interactions with relational databases.
 
 #Modules
@@ -20,7 +20,7 @@ Role-based Access: Registered patients.
 Description: Empowers administrators to manage packages, users, and appointment requests (approval and decline).
 Role-based Access: Admin users.
 
-#Technologies Used
+# Technologies Used
 Java:
 Core programming language.
 Spring Boot:
@@ -29,7 +29,7 @@ JPA/Hibernate:
 ORM tools for data persistence.
 Maven:Dependency management and build tool.
 
-#Project Structure
+# Project Structure
 src/main/java:
 com.kpjjohor.healthcare.controller: Contains controllers for handling user requests.
 com.kpjjohor.healthcare.model: Defines entities for the database.
@@ -42,7 +42,7 @@ static/css/style.css: Holds CSS styles for the application.
 src/main/webapp/WEB-INF/views:
 Contains JSP files for different views.
 
-#Database Design
+# Database Design
 Entities:
 User, Role, HealthScreeningPackage, Appointment, UserRole.
 Relationships:
@@ -55,7 +55,7 @@ Controllers (com.kpjjohor.healthcare.controller) handle user requests and intera
 Services (com.kpjjohor.healthcare.service) contain business logic, interacting with repositories.
 Repositories (com.kpjjohor.healthcare.repository) handle database interactions.
 
-#Conclusion
+# Conclusion
 The Healthcare Screening Appointment System aims to provide a user-friendly and dynamic experience for both patients and administrators. The use of Spring MVC with Spring Boot ensures a scalable and maintainable application, meeting modern healthcare appointment management needs.
 
 ## Setup
