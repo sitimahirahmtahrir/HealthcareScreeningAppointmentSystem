@@ -1,8 +1,9 @@
 package com.kpjjohor.healthcare.service.impl;
 
 import java.util.List;
-
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kpjjohor.healthcare.model.HealthScreeningPackage;
 import com.kpjjohor.healthcare.repository.HealthScreeningPackageRepository;
@@ -18,25 +19,29 @@ public class HealthScreeningPackageServiceImpl implements HealthScreeningPackage
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<HealthScreeningPackage> getAllPackages() {
         return packageRepository.findAll();
     }
 
-    @Override
-    public HealthScreeningPackage getPackageById(Long packageId) {
+    @SuppressWarnings("null")
+	@Override
+    public HealthScreeningPackage getPackageById(@NonNull Long packageId) {
         return packageRepository.findById(packageId)
-                .orElseThrow(() -> new RuntimeException("Health Screening Package not found"));
+            .orElseThrow();
     }
 
-    @Override
-    public void savePackage(HealthScreeningPackage healthScreeningPackage) {
-        packageRepository.save(healthScreeningPackage);
+    @SuppressWarnings("null")
+	@Override
+    public HealthScreeningPackage savePackage(HealthScreeningPackage healthScreeningPackage) {
+        return packageRepository.save(healthScreeningPackage);
     }
 
     @Override
     public void deactivatePackage(Long packageId) {
-        HealthScreeningPackage healthScreeningPackage = getPackageById(packageId);
-        healthScreeningPackage.setActive(false); // Assuming you have a setActive method in your HealthScreeningPackage class
+        @SuppressWarnings("null")
+		HealthScreeningPackage healthScreeningPackage = getPackageById(packageId);
+        healthScreeningPackage.setActive(false);
         packageRepository.save(healthScreeningPackage);
     }
 }

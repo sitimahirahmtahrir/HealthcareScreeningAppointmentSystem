@@ -16,8 +16,7 @@ public abstract class AppointmentServiceImpl implements AppointmentService {
         this.appointmentDAO = appointmentDAO;
     }
 
-    @SuppressWarnings("boxing")
-	public Appointment scheduleAppointment(Long medicalProfessionalId, LocalDate date, LocalTime time) {
+    public Appointment scheduleAppointment(Long medicalProfessionalId, LocalDate date, LocalTime time) {
         Appointment appointment = new Appointment();
         appointment.setMedicalProfessionalId(medicalProfessionalId);
         appointment.setDate(date);

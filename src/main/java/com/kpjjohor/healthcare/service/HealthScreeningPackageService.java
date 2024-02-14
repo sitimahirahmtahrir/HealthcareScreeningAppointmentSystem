@@ -10,7 +10,7 @@ public interface HealthScreeningPackageService {
 
     HealthScreeningPackage getPackageById(Long packageId);
 
-    void savePackage(HealthScreeningPackage healthScreeningPackage);
+    HealthScreeningPackage savePackage(HealthScreeningPackage healthScreeningPackage);
 
     void deactivatePackage(Long packageId);
 }

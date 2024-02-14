@@ -39,6 +39,10 @@ public class Appointment {
     @Column(name = "notes")
     private String notes;
 
+	private LocalDate appointmentDate;
+
+	private LocalTime appointmentTime;
+
     public Appointment() {}
 
     public Appointment(User user, HealthScreeningPackage healthScreeningPackage, LocalDateTime appointmentDateTime) {
@@ -84,8 +88,7 @@ public class Appointment {
         return appointmentDateTime.toLocalTime();
     }
 
-    @SuppressWarnings("unused")
-	public void setMedicalProfessionalId(long medicalProfessionalId) {
+    public void setMedicalProfessionalId(long medicalProfessionalId) {
         // You can implement the logic to set the medical professional's id here
     }
 
@@ -94,15 +97,22 @@ public class Appointment {
         return 0;
     }
 
-	@SuppressWarnings(value = { "unused" })
-	public void setDate(LocalDate date) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setDate(LocalDate date) {
 
-	@SuppressWarnings(value = {"unused" })
-	public void setTime(LocalTime time) {
-		// TODO Auto-generated method stub
-		
-	}
+        this.appointmentDate = date;
+
+        this.appointmentDateTime = this.appointmentDate.atTime(this.appointmentTime);
+
+    }
+
+
+    public void setTime(LocalTime time) {
+
+        this.appointmentTime = time;
+
+        this.appointmentDateTime = this.appointmentDate.atTime(this.appointmentTime);
+
+    }
+    
 }
+	

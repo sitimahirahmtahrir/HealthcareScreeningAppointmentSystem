@@ -34,7 +34,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(username);
     }
 
-    @Override
+    @SuppressWarnings("null")
+	@Override
     public void saveUser(User user) {
         // Implement the logic to save a user
         // This method is declared in the UserService interface
