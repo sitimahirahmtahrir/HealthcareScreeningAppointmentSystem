@@ -1,53 +1,69 @@
 # Healthcare Screening Appointment System
 
-## Project Overview
-This project is a Java-based Healthcare Screening Appointment System designed to manage health screening appointments efficiently. It incorporates user roles, appointment scheduling, and health screening package management.
+Project Overview
+The Healthcare Screening Appointment System (HSAS) is designed to streamline the appointment and screening process for healthcare institutions. Built using the Spring MVC framework with Spring Boot, the application follows the Model-View-Controller (MVC) architecture. It leverages Spring JDBC for efficient database connectivity, ensuring smooth interactions with relational databases.
 
-## Project Details
-- **Course:** Internet Programming
-- **Program:** Bachelor of Computer Science (Software Engineering)
-- **Course Lecturer(s):** Mr. Norizam Bin Katmon
-- **Student Name :
-     - Siti Mahirah binti M Tahrir (SX142509CSJF01)
-     - RAMAKRISHNA A/L MARIAPPAN (SX171156CSJS04)
+Modules
+User Registration:
 
-## Project Requirements
-- **Framework:** Spring MVC with Spring Boot
-- **Architecture:** Implement the Model-View-Controller (MVC) architecture
-- **Database Connectivity:** Use Spring JDBC for database connectivity
-- **Modules:** Minimum of 4 modules with role-based access
+Description: Allows users to register for the system.
+Role-based Access: All users.
+Appointment Booking:
 
-## Features
-- **User Roles:** Differentiate between users with distinct roles to control system access.
-- **Appointment Scheduling:** Allow users to schedule healthcare screening appointments.
-- **Health Screening Packages:** Manage various health screening packages offered by the system.
+Description: Facilitates users in booking healthcare screening appointments.
+Role-based Access: All users.
+Patient Dashboard:
 
-## Technologies Used
-- Java: Core programming language.
-- Spring Boot: Framework for building robust Java applications.
-- JPA/Hibernate: ORM tools for data persistence.
-- Maven: Dependency management and build tool.
+Description: Provides a dashboard for patients to view appointment status, screening reports, and payment details.
+Role-based Access: Registered patients.
+Admin Dashboard:
 
-## Modules
-1. **User Registration and Authentication Module:**
-   - Allow users to register and log in.
-   - Implement role-based authentication (e.g., user, admin).
-   - Only administrators (APPROVER roles) should have access to the approval and configuration functionalities.
+Description: Empowers administrators to manage packages, users, and appointment requests (approval and decline).
+Role-based Access: Admin users.
+Technologies Used
+Java:
 
-2. **Appointment Booking Module:**
-   - Users can book healthcare screening appointments.
-   - Include a form to select from a list of predefined health screening packages.
-   - store booked appointments in the database.
+Core programming language.
+Spring Boot:
 
-3. **Appointment Approval Module:**
-   - Approvers (administrators) have access to a dashboard showing pending appointments.
-   - Allow administrators to approve or reject appointments.
-   - Include a status (e.g., pending, approved, rejected) for each appointment.
+Framework for building robust Java applications.
+JPA/Hibernate:
 
-4. **Configuration Module:**
-   - only accessible to administrators (APPROVER role).
-   - Include the ability to activate or deactivate specific health screening packages.
-   - Provide a simple interface to manage other configurable elements (e.g., promotions).
+ORM tools for data persistence.
+Maven:
+
+Dependency management and build tool.
+Project Structure
+src/main/java:
+
+com.kpjjohor.healthcare.controller: Contains controllers for handling user requests.
+com.kpjjohor.healthcare.model: Defines entities for the database.
+com.kpjjohor.healthcare.repository: Manages database interactions.
+com.kpjjohor.healthcare.service: Contains service classes for business logic.
+com.kpjjohor.healthcare.exception: Handles exceptions and errors.
+src/main/resources:
+
+application.properties: Configures application-specific properties.
+static/css/style.css: Holds CSS styles for the application.
+src/main/webapp/WEB-INF/views:
+
+Contains JSP files for different views.
+Database Design
+Entities:
+
+User, Role, HealthScreeningPackage, Appointment, UserRole.
+Relationships:
+
+Many-to-One between Appointment and User.
+Many-to-One between UserRole and User.
+Database Code
+Located in the repository layer (com.kpjjohor.healthcare.repository).
+JSP File Integration with Java
+Controllers (com.kpjjohor.healthcare.controller) handle user requests and interact with services.
+Services (com.kpjjohor.healthcare.service) contain business logic, interacting with repositories.
+Repositories (com.kpjjohor.healthcare.repository) handle database interactions.
+Conclusion
+The Healthcare Screening Appointment System aims to provide a user-friendly and dynamic experience for both patients and administrators. The use of Spring MVC with Spring Boot ensures a scalable and maintainable application, meeting modern healthcare appointment management needs.
 
 ## Setup
 -Clone the repository:git clone https://github.com/your-username/HealthcareScreeningAppointmentSystem.git
