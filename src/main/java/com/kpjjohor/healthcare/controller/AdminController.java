@@ -6,10 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AdminController {
 
-    @GetMapping("/admin")
+    @GetMapping("/admin/dashboard")
     public String adminDashboard() {
-        return "admin-dashboard";
+        // Add logic to retrieve and display admin dashboard
+        return "admin_dashboard"; // Assuming you have an admin_dashboard.jsp file
     }
 
-    // Add additional methods for admin-related actions
+    // Add more methods for managing packages, users, etc.
 }
